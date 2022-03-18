@@ -73,17 +73,32 @@
 
 2.  String 类型与 undefined 类型数据运算
 
-    > 无论字符串是纯数字串还是含有字符的字符串,都遵循与加号 (+) 运算
-    > 实现的是连接操作,其余的运算输出的是 NaN
+        > 无论字符串是纯数字串还是含有字符的字符串,都遵循与加号 (+) 运算
+        > 实现的是连接操作,其余的运算输出的是 NaN
 
-        ```javascript
-        console.log('5' + undefined) //5undefined
-        console.log('5' - undefined) //NaN
-        console.log('5' * undefined) //NaN
-        console.log('5' / undefined) //NaN
+            ```javascript
+            console.log('5' + undefined) //5undefined
+            console.log('5' - undefined) //NaN
+            console.log('5' * undefined) //NaN
+            console.log('5' / undefined) //NaN
 
-        console.log('5a' + undefined) //5aundefined
-        console.log('5a' - undefined) //NaN
-        console.log('5a' * undefined) //NaN
-        console.log('5a' / undefined) //NaN
-        ```
+            console.log('5a' + undefined) //5aundefined
+            console.log('5a' - undefined) //NaN
+            console.log('5a' * undefined) //NaN
+            console.log('5a' / undefined) //NaN
+            ```
+
+    function debounce(fn, delay) {
+    let timer = null
+    return function () {
+    if(timer) clearTimeOut(timer)
+
+            let context = this
+            let arg = arguments
+            timer = setTimeout(() => {
+                timer = null
+                fn.apply(context, arg)
+            })
+        }
+
+    }
