@@ -14,6 +14,28 @@ const debounce = (callback, delay = 200, immediate = false) => {
     }, delay)
   }
 }
+/**
+ * @desc 函数防抖
+ * @param fn 函数
+ * @param wait 延迟执行毫秒数
+ * @param immediate true 表立即执行，false 表示非立即执行
+ */
+
+const debounce1 = (func, wait = 200, immediate = true) => {
+  let timer = null
+  return function() {
+    timer && clearTimeout(timer)
+    if (immediate) {
+      const now = !timer
+      timer = setTimeout(() => { timer = null }, wait)
+      timer && func.apply(this, arguments)
+    } else {
+      timer = setTimeout(() => {
+        func.apply(this, arguments)
+      }, wait)
+    }
+  }
+}
 
 
 // throttle
