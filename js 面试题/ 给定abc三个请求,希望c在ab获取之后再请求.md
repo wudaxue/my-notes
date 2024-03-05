@@ -9,9 +9,7 @@ function sendRequest(request) {
   })
 }
 
-async function processRequests() {
-  const requestList = ['a', 'b', 'c'];  // 您的请求列表
-  const concurrentLimit = 3;  // 同时处理的请求数量
+async function processRequests(requestList, concurrentLimit) {
   const executeRequests = async function(requests) {
     const responses = []
     for (const request of requests) {
@@ -25,15 +23,16 @@ async function processRequests() {
     // 将请求分组，每组处理concurrentLimit个请求
     for (let i = 0; i < requsetList.length; i += concurrentLimit) {
       const currentRequests = requestList.slice(i, i + concurrentLimit)
-      const response = await executeRequests(currentRequests)
+      const responses = await executeRequests(currentRequests)
       // 处理当前组的响应
         for (const response of responses) {
             console.log(response);
         }
     }
 }
-
-processRequests()
+const requestList = ['a', 'b', 'c'];  // 您的请求列表
+const concurrentLimit = 3;  // 同时处理的请求数量
+processRequests(requestList, concurrentLimit)
 ```
 
 
